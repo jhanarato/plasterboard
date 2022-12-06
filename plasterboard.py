@@ -201,9 +201,9 @@ def bathroom(name, ceiling_layers):
                 sheets_per_layer=5,
             ),
             "ceiling": Surface(
-                layers=2,
+                layers=ceiling_layers,
                 sheet_type=plasterboard_3600,
-                sheets_per_layer=ceiling_layers
+                sheets_per_layer=2
             )
         }
     )
