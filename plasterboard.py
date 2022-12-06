@@ -25,6 +25,9 @@ class Surface:
     def __post_init__(self):
         self.sheets = self.sheets_per_layer * self.layers
 
+    def __str__(self):
+        return f"{self.sheet_type} x {self.sheets_per_layer} x {self.layers} layers"
+
 @dataclass
 class Room:
     name: str
@@ -205,14 +208,19 @@ def bathroom(name, ceiling_layers):
         }
     )
 
-def display_room
-
 def display_room_quantities(room):
-    print(room.name)
     quants = quantities(room)
     for quant in quants:
-        print(f"    {quant}")
+        print(f"{quant}")
 
+def display_room_surfaces(room):
+    for location, surface in room.locations.items():
+        print(f"{location}: {surface}")
+
+def display_total_quantities(rooms):
+    quants = total_quantities(rooms)
+    for quant in quants:
+        print(quant)
 
 def main():
     granny_flat = [
@@ -224,7 +232,20 @@ def main():
     ]
 
     for room in granny_flat:
+        print(f"***** {room.name} *****")
+        print("")
+        print("Surfaces")
+        print("========")
+        display_room_surfaces(room)
+        print("")
+        print("Quantities")
+        print("==========")
         display_room_quantities(room)
+        print("")
+
+    print("***** Total Quantities *****")
+    print("")
+    display_total_quantities(granny_flat)
 
 
 if __name__ == "__main__":
