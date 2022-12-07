@@ -80,11 +80,11 @@ def total_quantities(rooms: List[Room]) -> List[Quantity]:
     return combine_quantities(quants)
 
 
-plasterboard_2400 = SheetType(
+plasterboard_3600_1350 = SheetType(
     brand="GTEK",
     material="Fire",
-    length=2400,
-    width=1200,
+    length=3600,
+    width=1350,
     thickness=13
 )
 
@@ -118,28 +118,28 @@ def bedroom(name):
         locations={
             "north wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_3600,
-                sheets_per_layer=2.5
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2.0
             ),
             "south wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_3600,
-                sheets_per_layer=2.5
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2.0
             ),
             "east wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_2400,
-                sheets_per_layer=5.0
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2+(2/3)
             ),
             "west wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_2400,
-                sheets_per_layer=5.0
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2+(2/3)
             ),
             "ceiling": Surface(
                 layers=2,
-                sheet_type=plasterboard_3600,
-                sheets_per_layer=2.5
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2+(1/2)
             )
         }
     )
@@ -150,28 +150,28 @@ def office():
         locations={
             "north wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_2400,
-                sheets_per_layer=5.0
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2+(1/6)
             ),
             "south wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_2400,
-                sheets_per_layer=5.0
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2+(1/3)
             ),
             "east wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_2400,
-                sheets_per_layer=5.0,
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2+(2/3)
             ),
             "west wall": Surface(
                 layers=2,
-                sheet_type=plasterboard_2400,
-                sheets_per_layer=5.0,
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2+(2/3),
             ),
             "ceiling": Surface(
                 layers=2,
-                sheet_type=plasterboard_2400,
-                sheets_per_layer=8
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=3+(1/8)
             )
         }
     )
@@ -202,7 +202,7 @@ def bathroom(name, ceiling_layers):
             ),
             "ceiling": Surface(
                 layers=ceiling_layers,
-                sheet_type=plasterboard_3600,
+                sheet_type=plasterboard_3600_1350,
                 sheets_per_layer=2
             )
         }
