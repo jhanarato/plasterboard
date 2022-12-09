@@ -62,6 +62,7 @@ def quantities(room: Room) -> List[Quantity]:
 
     return quants
 
+# TODO Refactor this method
 def combine_quantities(quants: List[Quantity]) -> List[Quantity]:
     combined = []
     sheet_types_ = { quant.sheet_type for quant in quants }
@@ -88,7 +89,7 @@ plasterboard_3600_1350 = SheetType(
     thickness=13
 )
 
-plasterboard_3600 = SheetType(
+plasterboard_3600_1200 = SheetType(
     brand="GTEK",
     material="Fire",
     length=3600,
@@ -96,19 +97,35 @@ plasterboard_3600 = SheetType(
     thickness=13
 )
 
-cement_2400 = SheetType(
-    brand="GTEK",
-    material="Duraliner",
+cement_2400_1200 = SheetType(
+    brand="Duraliner",
+    material="Fibre Cement",
     length=2400,
     width=1200,
     thickness=6
 )
 
-cement_3600 = SheetType(
-    brand="GTEK",
-    material="Duraliner",
+cement_1800_1200 = SheetType(
+    brand="Duraliner",
+    material="Fibre Cement",
+    length=1800,
+    width=1200,
+    thickness=6
+)
+
+cement_3600_1200 = SheetType(
+    brand="Duraliner",
+    material="Fibre Cement",
     length=3600,
     width=1200,
+    thickness=6
+)
+
+cement_3600_1350 = SheetType(
+    brand="Duraliner",
+    material="Fibre Cement",
+    length=3600,
+    width=1350,
     thickness=6
 )
 
@@ -176,32 +193,64 @@ def office():
         }
     )
 
-def bathroom(name, ceiling_layers):
+def ensuite_bathroom():
     return Room(
-        name=name,
+        name="Abbot en suite",
         locations={
             "north wall": Surface(
                 layers=1,
-                sheet_type=cement_3600,
-                sheets_per_layer=1.5
+                sheet_type=cement_1800_1200,
+                sheets_per_layer=2+(1/4)
             ),
             "south wall": Surface(
                 layers=1,
-                sheet_type=cement_3600,
-                sheets_per_layer=1.5
+                sheet_type=cement_1800_1200,
+                sheets_per_layer=2+(1/4)
             ),
             "east wall": Surface(
                 layers=1,
-                sheet_type=cement_2400,
-                sheets_per_layer=5,
+                sheet_type=cement_3600_1350,
+                sheets_per_layer=2+(1/6),
             ),
             "west wall": Surface(
                 layers=1,
-                sheet_type=cement_2400,
-                sheets_per_layer=5,
+                sheet_type=cement_3600_1350,
+                sheets_per_layer=2+(1/6),
             ),
             "ceiling": Surface(
-                layers=ceiling_layers,
+                layers=2,
+                sheet_type=plasterboard_3600_1350,
+                sheets_per_layer=2
+            )
+        }
+    )
+
+def separate_bathroom():
+    return Room(
+        name="Separate Bathroom",
+        locations={
+            "north wall": Surface(
+                layers=1,
+                sheet_type=cement_1800_1200,
+                sheets_per_layer=1
+            ),
+            "south wall": Surface(
+                layers=1,
+                sheet_type=cement_1800_1200,
+                sheets_per_layer=2+(1/4)
+            ),
+            "east wall": Surface(
+                layers=1,
+                sheet_type=cement_3600_1350,
+                sheets_per_layer=2+(1/6),
+            ),
+            "west wall": Surface(
+                layers=1,
+                sheet_type=cement_3600_1350,
+                sheets_per_layer=2+(1/6),
+            ),
+            "ceiling": Surface(
+                layers=1,
                 sheet_type=plasterboard_3600_1350,
                 sheets_per_layer=2
             )
@@ -227,8 +276,8 @@ def main():
         bedroom("Abbot Bedroom"),
         bedroom("No. 2 Bedroom"),
         office(),
-        bathroom("Abbot Bathroom", ceiling_layers=2),
-        bathroom("No. 2 Bathroom", ceiling_layers=1)
+        ensuite_bathroom(),
+        separate_bathroom()
     ]
 
     for room in granny_flat:
