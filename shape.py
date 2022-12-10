@@ -3,6 +3,7 @@ from typing import Protocol
 
 
 class Shape(Protocol):
+    """Generic shape that defines a way to computes its area"""
     def area(self) -> float:
         ...
 

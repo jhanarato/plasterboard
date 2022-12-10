@@ -7,6 +7,7 @@ from surface import Surface
 
 @dataclass
 class Room:
+    """A collection of surfaces, also a group of sheets"""
     surfaces: dict[str, Surface] = field(default_factory=dict)
 
     def sheet_areas(self) -> dict[Sheet, float]:

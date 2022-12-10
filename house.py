@@ -6,6 +6,7 @@ from room import Room
 
 @dataclass
 class House:
+    """A collection of rooms, also a group of sheets"""
     rooms: dict[str, Room] = field(default_factory=dict)
 
     def sheet_areas(self):

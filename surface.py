@@ -7,6 +7,7 @@ from sheet import Sheet
 
 @dataclass
 class Surface:
+    """A collection of sheet layers having an arbitrary shape"""
     layers: list[Sheet]
     shape: Shape
 
