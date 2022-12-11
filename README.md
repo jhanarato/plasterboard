@@ -9,6 +9,6 @@ fibre cement cladding, we decided exactly what size sheets we'd need and how man
 addition, some walls and ceilings have a double layer of plasterboard. Bathroom walls
 are to be tiled and the walls will be lined with [fibre cement sheeting](https://bgcinnovadesign.com.au/facades-linings/bgc-fibre-cement/duraliner-plus/).
 
-To evaluate all this information I've written the code in this repository.
+To evaluate all this information I've written the code in this repository. I'm unlikely to use the code here again until my next building project but it should still be applicable. 
 
 
